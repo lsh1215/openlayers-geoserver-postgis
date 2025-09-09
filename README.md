@@ -22,11 +22,13 @@ openlayers-geoserver-postgis/
 ## 🚀 빠른 시작
 
 ### 1. 환경변수 설정
+
 ```bash
 cp env-variables.txt .env
 ```
 
 ### 2. Docker 서비스 실행
+
 ```bash
 # GeoServer + PostGIS 실행
 docker compose up -d
@@ -36,6 +38,7 @@ docker compose ps
 ```
 
 ### 3. React 프론트엔드 실행
+
 ```bash
 cd frontend
 npm install
@@ -45,15 +48,16 @@ npm run dev
 
 ## 📍 접속 정보
 
-| 서비스 | URL | 로그인 정보 |
-|--------|-----|-------------|
-| **GeoServer** | http://localhost:8080/geoserver | admin / geoserver123! |
-| **React App** | http://localhost:5173 | - |
-| **PostGIS** | localhost:5432 | geoserver / geoserver123! |
+| 서비스        | URL                             | 로그인 정보               |
+| ------------- | ------------------------------- | ------------------------- |
+| **GeoServer** | http://localhost:8080/geoserver | admin / geoserver123!     |
+| **React App** | http://localhost:5173           | -                         |
+| **PostGIS**   | localhost:5432                  | geoserver / geoserver123! |
 
 ## ⚙️ GeoServer 설정
 
 ### 1. 워크스페이스 생성
+
 1. GeoServer 관리 페이지 접속 → 로그인
 2. 좌측 메뉴: **Data** → **Workspaces**
 3. **Add new workspace** 클릭
@@ -65,6 +69,7 @@ npm run dev
 5. **Submit** 클릭
 
 ### 2. PostGIS 데이터 스토어 생성
+
 1. 좌측 메뉴: **Data** → **Stores**
 2. **Add new Store** → **PostGIS** 선택
 3. 연결 정보 입력:
@@ -80,6 +85,7 @@ npm run dev
 4. **Test Connection** → **Save**
 
 ### 3. 레이어 발행
+
 1. 좌측 메뉴: **Data** → **Layers**
 2. **Add a new layer** → 생성한 데이터스토어 선택
 3. 테이블 선택 후 **Publish**
@@ -121,11 +127,13 @@ docker compose down -v
 ## 🗃️ 데이터 임포트 방법
 
 ### QGIS 사용 (GUI)
+
 1. QGIS 설치: https://qgis.org/ko/
 2. PostGIS 연결 설정
 3. 벡터 레이어 → PostGIS로 내보내기
 
 ### 명령줄 도구 (자동화)
+
 ```bash
 # GDAL 설치
 brew install gdal
@@ -144,6 +152,7 @@ ogr2ogr -f "PostgreSQL" \
 ## 🔧 문제 발생 시 확인
 
 ### 포트 충돌
+
 ```bash
 # 사용 중인 포트 확인
 lsof -i :8080
@@ -155,10 +164,12 @@ POSTGIS_PORT=5433
 ```
 
 ### CORS 오류
+
 - Docker Compose에서 이미 CORS 설정됨
 - 필요시 특정 오리진만 허용하도록 수정 가능
 
 ### 데이터 로딩 실패
+
 1. 브라우저 개발자 도구 → Console 탭 확인
 2. Network 탭에서 WFS 요청 상태 확인
 3. 워크스페이스:레이어명이 정확한지 확인
